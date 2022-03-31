@@ -9,6 +9,10 @@ public class BaseGridMovement : BaseGridObject
     protected float progressToTarget = 1f;
     protected IntVector2 currentInputDirecion;
     private IntVector2 previousInputDirection;
+    private void Start()
+    {      
+        targetGridPosition = GridPos;
+    }
     //virtul---> can be overrided
     protected virtual void Update()
     {
@@ -19,9 +23,10 @@ public class BaseGridMovement : BaseGridObject
             GridPos = targetGridPosition;
         }
         //if we set anew target and our current unput is valid -> not a wall
-        if(GridPos==targetGridPosition&&LevelGeneratorSystem.Grid[Mathf.Abs(GridPos.y+currentInputDirecion.y),GridPos.x+currentInputDirecion.x]!=1)
+        if(GridPos==targetGridPosition&&LevelGeneratorSystem.Grid[Mathf.Abs(GridPos.y+currentInputDirecion.y),targetGridPosition.x+currentInputDirecion.x]!=1)
         {
             targetGridPosition += currentInputDirecion;
+            previousInputDirection = currentInputDirecion;
         }
         //if we set a new target and our current input is not valid->is a wall
         else  if(GridPos==targetGridPosition&& LevelGeneratorSystem.Grid[Mathf.Abs(GridPos.y + previousInputDirection.y), GridPos.x+previousInputDirection.x] != 1)
@@ -30,6 +35,7 @@ public class BaseGridMovement : BaseGridObject
         }
         if (GridPos == targetGridPosition) return;
         progressToTarget += MoveSpeed * Time.deltaTime;
-        Debug.Log("base method...");
+        transform.position = Vector3.Lerp(transform.position,targetGridPosition.ToVector3(),progressToTarget);
+       // Debug.Log("base method...");
     }
 }

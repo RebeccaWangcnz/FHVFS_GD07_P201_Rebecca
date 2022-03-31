@@ -6,7 +6,6 @@ public class Hackman : BaseGridMovement
 {
     protected override void Update()
     {
-        // base.Update();
         //Debug.Log("overriding method")
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -24,6 +23,9 @@ public class Hackman : BaseGridMovement
         {
             currentInputDirecion = new IntVector2(0, 1);
         }
+
         Debug.Log($"x:{currentInputDirecion.x}|y:{currentInputDirecion.y}");
+        base.Update();
+        //transform.position = progressToTarget * currentInputDirecion;
     }
 }

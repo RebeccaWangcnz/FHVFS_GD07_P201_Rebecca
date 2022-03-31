@@ -1,5 +1,5 @@
   using System;
- using UnityEngine
+using UnityEngine;
     // Start is called before the first frame update
     //struct : a  value type
     [Serializable]

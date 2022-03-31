@@ -20,16 +20,17 @@ public class LevelGeneratorSystem : MonoBehaviour
 
     private void Awake()
     {
-        for(int i=0;i<Grid.GetLength(0);i++)
+        for(int y=0;y<Grid.GetLength(0);y++)
         {
-            for(int j=0;j<Grid.GetLength(1);j++)
+            for(int x=0;x<Grid.GetLength(1);x++)
             {
               //  Instantiate(BaseGridObjectPrefabs[Grid[i, j]], Origin.position + new Vector3(j, -i, 0), Origin.rotation);
-                var objectType = Grid[i, j];
+                var objectType = Grid[y, x];
                 var gridObjectPrefab = BaseGridObjectPrefabs[objectType];
                 var gridObjectClone = Instantiate(gridObjectPrefab);
-                gridObjectClone.GridPos = new IntVector2(i, j);
-                gridObjectClone.transform.position = new Vector3(gridObjectClone.GridPos.x, gridObjectClone.GridPos.y,0);
+                gridObjectClone.GridPos = new IntVector2(x, -y);
+                //Debug.Log(gridObjectClone.name+" "+gridObjectClone.GridPos.x + " " + gridObjectClone.GridPos.y);
+                gridObjectClone.transform.position = new Vector3(gridObjectClone.GridPos.x, gridObjectClone.GridPos.y);
             }
         }
     }
