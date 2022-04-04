@@ -15,4 +15,9 @@ public static class ExtensionMethod
     {
         return new IntVector2((int)vector3.x, (int)vector3.y);
     }
+    public static bool IsWall(this IntVector2 vector2)
+    {
+
+        return LevelGeneratorSystem.Grid[Mathf.Abs(vector2.y), vector2.x] == 1;
+    }
 }

@@ -108,4 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f47104aec5cc14e9a319492f022ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GripPos: {x: 0, y: 0}
+  GridPos:
+    x: 0
+    y: 0
+  MoveSpeed: 3

@@ -23,13 +23,13 @@ public class BaseGridMovement : BaseGridObject
             GridPos = targetGridPosition;
         }
         //if we set anew target and our current unput is valid -> not a wall
-        if(GridPos==targetGridPosition&&LevelGeneratorSystem.Grid[Mathf.Abs(GridPos.y+currentInputDirecion.y),targetGridPosition.x+currentInputDirecion.x]!=1)
+        if(GridPos==targetGridPosition&&!(GridPos+currentInputDirecion).IsWall())
         {
             targetGridPosition += currentInputDirecion;
             previousInputDirection = currentInputDirecion;
         }
         //if we set a new target and our current input is not valid->is a wall
-        else  if(GridPos==targetGridPosition&& LevelGeneratorSystem.Grid[Mathf.Abs(GridPos.y + previousInputDirection.y), GridPos.x+previousInputDirection.x] != 1)
+        else  if(GridPos==targetGridPosition&&! (GridPos + previousInputDirection).IsWall())
         {
             targetGridPosition += previousInputDirection;
         }

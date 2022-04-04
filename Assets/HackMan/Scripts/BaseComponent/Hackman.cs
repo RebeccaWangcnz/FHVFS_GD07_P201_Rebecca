@@ -9,19 +9,19 @@ public class Hackman : BaseGridMovement
         //Debug.Log("overriding method")
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            currentInputDirecion = new IntVector2(0, -1);
+            currentInputDirecion = IntVector2.down;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentInputDirecion = new IntVector2(-1, 0);
+            currentInputDirecion =IntVector2.left;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentInputDirecion = new IntVector2(1, 0);
+            currentInputDirecion =IntVector2.right;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            currentInputDirecion = new IntVector2(0, 1);
+            currentInputDirecion =IntVector2.up;
         }
 
         Debug.Log($"x:{currentInputDirecion.x}|y:{currentInputDirecion.y}");
