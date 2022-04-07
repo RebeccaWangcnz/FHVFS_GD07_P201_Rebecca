@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseGridMovement : BaseGridObject
+public class MovementComponent : BaseGridObject
 {
     public float MoveSpeed;
     protected IntVector2 targetGridPosition;

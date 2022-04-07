@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ghost :BaseGridMovement
+public class EnemyInputComponent :MovementComponent
 {
     private IntVector2[] movementDirections = new IntVector2[]
     {
