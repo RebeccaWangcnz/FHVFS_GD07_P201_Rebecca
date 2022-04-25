@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3524652950503816879}
   - component: {fileID: 1259467711833513200}
   - component: {fileID: 7010471361891013263}
+  - component: {fileID: 5905671996791702166}
+  - component: {fileID: 2838540365555012594}
   m_Layer: 0
   m_Name: Hackman
   m_TagString: Untagged
@@ -91,7 +93,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4378699156262773470}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -111,4 +113,32 @@ MonoBehaviour:
   GridPos:
     x: 0
     y: 0
-  MoveSpeed: 5
+  MoveSpeed: 1
+--- !u!54 &5905671996791702166
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378699156262773470}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &2838540365555012594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378699156262773470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89877a4ad22c5074cae2d70a3df94fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
