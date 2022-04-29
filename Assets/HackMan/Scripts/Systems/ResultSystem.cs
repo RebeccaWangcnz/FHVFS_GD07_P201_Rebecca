@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultSystem : Singleton<ResultSystem>
 {
-
+    [SerializeField]
+    private Text resultText;
+    [SerializeField]
+    private GameObject resultUI;
     private void OnEnable()
     {
+        resultUI.SetActive(false);
         Evently.Instance.Subscribe<ResultEvent>(Result);
     }
     private void OnDisable()
@@ -17,9 +22,15 @@ public class ResultSystem : Singleton<ResultSystem>
     private void Result(ResultEvent evt)
     {
         if (evt.winOrLose)
-            Debug.Log("You win!");
+        {
+            resultText.text = "You Win!!!";
+        }
         else
-            Debug.Log("You lose!");
-        SceneManager.LoadScene("Level");
+        {
+            resultText.text = "You Lose...";
+        }
+        Time.timeScale = 0;
+        resultUI.SetActive(true);
     }
+
 }

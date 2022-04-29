@@ -35,7 +35,7 @@ public class MovementComponent : BaseGridObject
         }
         if (GridPos == targetGridPosition) return;
         progressToTarget += MoveSpeed * Time.deltaTime;
-        transform.position = Vector3.Lerp(transform.position,targetGridPosition.ToVector3(),progressToTarget);
+        transform.position = Vector3.Lerp(GridPos.ToVector3(),targetGridPosition.ToVector3(),progressToTarget);//a need to be a constant value
        // Debug.Log("base method...");
     }
 }

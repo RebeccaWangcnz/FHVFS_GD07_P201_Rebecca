@@ -113,7 +113,7 @@ MonoBehaviour:
   GridPos:
     x: 0
     y: 0
-  MoveSpeed: 1
+  MoveSpeed: 3
 --- !u!54 &5905671996791702166
 Rigidbody:
   m_ObjectHideFlags: 0
