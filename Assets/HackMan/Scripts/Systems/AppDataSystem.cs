@@ -52,9 +52,26 @@ public class AppDataSystem
             Debug.Log("The filename is incorrect!");
             return default(T);
         }
-        var obj = File.ReadAllText(fullFilePath);
-        var data = JsonConvert.DeserializeObject<T>(obj);
-        return data;
+        var data = File.ReadAllText(fullFilePath);
+        var obj = JsonConvert.DeserializeObject<T>(data);
+        return obj;
     }
-
+    public static List<T> LoadAll<T>()
+    {
+        var directoryPath = $"{Application.dataPath}/StreamingAssets/{typeof(T)}";
+        if (!Directory.Exists(directoryPath))
+        {
+            Debug.Log("The type returns nothing");
+            return default(List<T>);
+        }
+        var files = Directory.GetFiles(directoryPath,"*json");//return path
+        List<T> objs=new List<T>();
+        foreach (var file in files)
+        {
+            var data = File.ReadAllText(file);
+            var obj = JsonConvert.DeserializeObject<T>(data);
+            objs.Add(obj);
+        }
+        return objs;
+    }
 }

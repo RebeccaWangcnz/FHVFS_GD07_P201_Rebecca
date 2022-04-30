@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class ResultSystem : Singleton<ResultSystem>
 {
     private Text resultText;
-    public GameObject resultUI;
-    public int previousLevelIndex;
-    public bool needRandom=true;
+    private GameObject resultUI;
     private void OnEnable()
     {
+        Instantiate();
         Evently.Instance.Subscribe<ResultEvent>(Result);
     }
     private void OnDisable()

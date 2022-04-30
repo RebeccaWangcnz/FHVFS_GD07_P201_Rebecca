@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelGeneratorSystem : MonoBehaviour
 {    
+    
     public Transform Origin;
     public int numbersOfLevel=10;
     //1-->wall 0--->pill 2--->player 3--->ghost
@@ -24,12 +25,12 @@ public class LevelGeneratorSystem : MonoBehaviour
     private int currentLevelIndex;
     private void Awake()
     {
-        ResultSystem.Instance.Instantiate();
-        if (ResultSystem.Instance.needRandom)
+        LoadAllLevels();
+        if (RandomLevelSystem.Instance.needRandom)
             currentLevelIndex = Random.Range(1, numbersOfLevel + 1);
         else
-            currentLevelIndex = ResultSystem.Instance.previousLevelIndex;
-        Debug.Log(currentLevelIndex);
+            currentLevelIndex = RandomLevelSystem.Instance.previousLevelIndex;
+
         var grid = AppDataSystem.Load<int[,]>($"Level_{currentLevelIndex}.json");
 
         for (int y=0;y< grid.GetLength(0);y++)
@@ -46,10 +47,31 @@ public class LevelGeneratorSystem : MonoBehaviour
             }
         }
         //LogObject();
-        ResultSystem.Instance.previousLevelIndex = currentLevelIndex;
+        RandomLevelSystem.Instance.previousLevelIndex = currentLevelIndex;
     }
 
-
+    private void LoadAllLevels()
+    {
+        Vector3 origin = new Vector3(0,0,0);
+        var grids = AppDataSystem.LoadAll<int[,]>();
+        foreach (var element in grids)
+        {
+            for (int y = 0; y < element.GetLength(0); y++)
+            {
+                for (int x = 0; x < element.GetLength(1); x++)
+                {
+                    //  Instantiate(BaseGridObjectPrefabs[Grid[i, j]], Origin.position + new Vector3(j, -i, 0), Origin.rotation);
+                    var objectType = element[y, x];
+                    var gridObjectPrefab = BaseGridObjectPrefabs[objectType];
+                    var gridObjectClone =  Instantiate(gridObjectPrefab);
+                    gridObjectClone.GridPos =new IntVector2(x, -y);
+                    //Debug.Log(gridObjectClone.name+" "+gridObjectClone.GridPos.x + " " + gridObjectClone.GridPos.y);
+                    gridObjectClone.transform.position =origin+ new Vector3(gridObjectClone.GridPos.x, gridObjectClone.GridPos.y);
+                }
+            }
+            origin += new Vector3(element.GetLength(1) * 2, 0);
+        }
+    }
     [ContextMenu("Log Grid")]
     public void LogObject()
     {
@@ -85,14 +107,14 @@ public class LevelGeneratorSystem : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        ResultSystem.Instance.needRandom = false;
+        RandomLevelSystem.Instance.needRandom = false;
         SceneManager.LoadScene("Level");
 
     }
     public void AnotherLevel()
     {
         Time.timeScale = 1;
-        ResultSystem.Instance.needRandom = true;
+        RandomLevelSystem.Instance.needRandom = true;
         SceneManager.LoadScene("Level");
     }
 }
