@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class ResultSystem : Singleton<ResultSystem>
 {
-    [SerializeField]
     private Text resultText;
-    [SerializeField]
-    private GameObject resultUI;
+    public GameObject resultUI;
+    public int previousLevelIndex;
+    public bool needRandom=true;
     private void OnEnable()
     {
-        resultUI.SetActive(false);
         Evently.Instance.Subscribe<ResultEvent>(Result);
     }
     private void OnDisable()
@@ -31,6 +30,12 @@ public class ResultSystem : Singleton<ResultSystem>
         }
         Time.timeScale = 0;
         resultUI.SetActive(true);
+    }
+    public void Instantiate()
+    {
+        resultText = FindObjectOfType<ResultTextComponent>().GetComponent<Text>();
+        resultUI = resultText.transform.parent.gameObject;
+        resultUI.SetActive(false);
     }
 
 }

@@ -24,7 +24,11 @@ public class LevelGeneratorSystem : MonoBehaviour
     private int currentLevelIndex;
     private void Awake()
     {
-        currentLevelIndex = Random.Range(1, numbersOfLevel + 1);
+        ResultSystem.Instance.Instantiate();
+        if (ResultSystem.Instance.needRandom)
+            currentLevelIndex = Random.Range(1, numbersOfLevel + 1);
+        else
+            currentLevelIndex = ResultSystem.Instance.previousLevelIndex;
         Debug.Log(currentLevelIndex);
         var grid = AppDataSystem.Load<int[,]>($"Level_{currentLevelIndex}.json");
 
@@ -41,8 +45,8 @@ public class LevelGeneratorSystem : MonoBehaviour
                 gridObjectClone.transform.position = new Vector3(gridObjectClone.GridPos.x, gridObjectClone.GridPos.y);
             }
         }
-        LogObject();
-
+        //LogObject();
+        ResultSystem.Instance.previousLevelIndex = currentLevelIndex;
     }
 
 
@@ -78,9 +82,17 @@ public class LevelGeneratorSystem : MonoBehaviour
         var obj = JsonConvert.SerializeObject(enemies);
         Debug.Log(obj);
     }
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        ResultSystem.Instance.needRandom = false;
+        SceneManager.LoadScene("Level");
+
+    }
     public void AnotherLevel()
     {
         Time.timeScale = 1;
+        ResultSystem.Instance.needRandom = true;
         SceneManager.LoadScene("Level");
     }
 }
