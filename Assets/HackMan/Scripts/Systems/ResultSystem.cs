@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ResultSystem : Singleton<ResultSystem>
 {
     private Text resultText;
+    private Text hpText;
     private GameObject resultUI;
     private void OnEnable()
     {

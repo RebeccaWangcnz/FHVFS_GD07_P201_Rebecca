@@ -20,4 +20,9 @@ public static class ExtensionMethod
 
         return LevelGeneratorSystem.Grid[Mathf.Abs(vector2.y), vector2.x] == 1;
     }
+    public static bool IsEdge(this IntVector2 vector2)
+    {
+
+        return LevelGeneratorSystem.Grid[Mathf.Abs(vector2.y), vector2.x] == 4;
+    }
 }

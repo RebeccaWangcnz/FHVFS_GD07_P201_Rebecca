@@ -22,7 +22,7 @@ public class EnemyInputComponent :MovementComponent
             {
                 var potentialTargetPosition = targetGridPosition + movementDirection;
 
-                if (potentialTargetPosition.IsWall()) continue;
+                if (!CanGoThrough(potentialTargetPosition)) continue;
                 
                     //防止球来回移动 所以移动方向不能是先前方向的反方向
                     if(movementDirection!=-currentInputDirecion)

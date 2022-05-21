@@ -25,11 +25,23 @@ public class PlayerInputComponent : MovementComponent
         {
             currentInputDirecion =IntVector2.up;
         }
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.W))
         {
-            Evently.Instance.Publish(new ShootingEvent(currentInputDirecion,targetGridPosition));
+            Evently.Instance.Publish(new ShootingEvent(IntVector2.up, targetGridPosition));
         }
-       // Debug.Log($"x:{currentInputDirecion.x}|y:{currentInputDirecion.y}");
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Evently.Instance.Publish(new ShootingEvent(IntVector2.left, targetGridPosition));
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Evently.Instance.Publish(new ShootingEvent(IntVector2.down, targetGridPosition));
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Evently.Instance.Publish(new ShootingEvent(IntVector2.right, targetGridPosition));
+        }
+        // Debug.Log($"x:{currentInputDirecion.x}|y:{currentInputDirecion.y}");
         base.Update();
         //transform.position = progressToTarget * currentInputDirecion;
     }
