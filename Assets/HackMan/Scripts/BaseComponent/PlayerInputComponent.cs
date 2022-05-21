@@ -25,7 +25,10 @@ public class PlayerInputComponent : MovementComponent
         {
             currentInputDirecion =IntVector2.up;
         }
-
+        if(Input.GetMouseButtonDown(0))
+        {
+            Evently.Instance.Publish(new ShootingEvent(currentInputDirecion,targetGridPosition));
+        }
        // Debug.Log($"x:{currentInputDirecion.x}|y:{currentInputDirecion.y}");
         base.Update();
         //transform.position = progressToTarget * currentInputDirecion;

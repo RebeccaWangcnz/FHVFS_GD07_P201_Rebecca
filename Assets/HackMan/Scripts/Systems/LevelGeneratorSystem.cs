@@ -25,14 +25,14 @@ public class LevelGeneratorSystem : MonoBehaviour
     private int currentLevelIndex;
     private void Awake()
     {
-        LoadAllLevels();
+        //LoadAllLevels();
         if (RandomLevelSystem.Instance.needRandom)
             currentLevelIndex = Random.Range(1, numbersOfLevel + 1);
         else
             currentLevelIndex = RandomLevelSystem.Instance.previousLevelIndex;
 
         var grid = AppDataSystem.Load<int[,]>($"Level_{currentLevelIndex}.json");
-
+        Grid = grid;
         for (int y=0;y< grid.GetLength(0);y++)
         {
             for(int x=0;x< grid.GetLength(1);x++)

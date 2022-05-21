@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 4392779511449555555}
   - component: {fileID: 3524652950503816879}
   - component: {fileID: 1259467711833513200}
-  - component: {fileID: 7010471361891013263}
   - component: {fileID: 5905671996791702166}
-  - component: {fileID: 2838540365555012594}
+  - component: {fileID: 2795838267498626180}
   m_Layer: 0
-  m_Name: Hackman
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4378699156262773470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.53, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,22 +97,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7010471361891013263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4378699156262773470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9393b4490fc3064c862154aece93862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GridPos:
-    x: 0
-    y: 0
-  MoveSpeed: 3
 --- !u!54 &5905671996791702166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &2838540365555012594
+--- !u!114 &2795838267498626180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +122,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4378699156262773470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89877a4ad22c5074cae2d70a3df94fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: 64cf472589ba72647bcec6441cebebd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_maxhp: 3
+  GridPos:
+    x: 0
+    y: 0
+  MoveSpeed: 8
+  direction:
+    x: 0
+    y: 0
+  wallMat: {fileID: 2100000, guid: d438c562909f1304d9a56f7be5cfce76, type: 2}
+  fakeWallMat: {fileID: 2100000, guid: 44aafdf15bf991841b6e81c95e261719, type: 2}

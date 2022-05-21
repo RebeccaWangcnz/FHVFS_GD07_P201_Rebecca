@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wall : BaseGridObject
+public class ChangeWallEvent : MonoBehaviour
 {
-    public bool fake;
+    
 }
