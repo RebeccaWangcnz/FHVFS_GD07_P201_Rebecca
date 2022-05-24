@@ -114,6 +114,12 @@ MonoBehaviour:
     x: 0
     y: 0
   MoveSpeed: 3
+  targetGridPosition:
+    x: 0
+    y: 0
+  currentInputDirecion:
+    x: 0
+    y: 0
 --- !u!54 &5905671996791702166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,4 +148,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89877a4ad22c5074cae2d70a3df94fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_maxhp: 3
+  upgradeNum: 5

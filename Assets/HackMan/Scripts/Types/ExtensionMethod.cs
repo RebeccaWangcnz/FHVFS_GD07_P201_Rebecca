@@ -25,4 +25,8 @@ public static class ExtensionMethod
 
         return LevelGeneratorSystem.Grid[Mathf.Abs(vector2.y), vector2.x] == 4;
     }
+    public static bool IsPill(this IntVector2 vector2)
+    {
+        return LevelGeneratorSystem.Grid[Mathf.Abs(vector2.y), vector2.x] == 0;
+    }
 }

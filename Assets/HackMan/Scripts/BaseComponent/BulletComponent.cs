@@ -26,11 +26,16 @@ public class BulletComponent : MovementComponent
             currentInputDirecion = direction;
             hasDirection = true;
         }
-        if(!CanGoThrough(GridPos + currentInputDirecion))
+        if ((GridPos + currentInputDirecion).IsWall())
         {
             Evently.Instance.Publish(new ChangeWallEvent(GridPos + currentInputDirecion));
             Destroy(this.gameObject);
         }
+        if (!CanGoThrough(GridPos + currentInputDirecion))
+        {
+            Destroy(this.gameObject);
+        }
+
         base.Update();
     }
 }

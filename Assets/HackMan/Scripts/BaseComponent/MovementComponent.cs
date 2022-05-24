@@ -5,9 +5,11 @@ using UnityEngine;
 public class MovementComponent : BaseGridObject
 {
     public float MoveSpeed;
-    protected IntVector2 targetGridPosition;
+    [HideInInspector]
+    public IntVector2 targetGridPosition;
     protected float progressToTarget = 1f;
-    protected IntVector2 currentInputDirecion;
+    [HideInInspector]
+    public IntVector2 currentInputDirecion;
     private IntVector2 previousInputDirection;
     private void Start()
     {      

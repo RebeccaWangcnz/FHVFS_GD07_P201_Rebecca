@@ -5,33 +5,34 @@ using UnityEngine.UI;
 
 public class CollectorComponent : MonoBehaviour
 {
-    public int player_maxhp;
-    private int player_currenthp;
-    private Text HPtext;
+    public int upgradeNum;
+    private int pillNum;
+    private Pill[] blankPos;
     private void Awake()
     {
         Time.timeScale = 1;
-        player_currenthp = player_maxhp;
-        HPtext = FindObjectOfType<HPTextComponent>().GetComponent<Text>();
-        HPtext.text = "HP: " + player_currenthp.ToString();
+        pillNum = 0;
+        blankPos = FindObjectsOfType<Pill>();
     }
     private void Update()
     {
-        if(player_currenthp<=0)
-        { 
-            Evently.Instance.Publish(new LosingEvent()); 
+         if(pillNum>upgradeNum)
+        {
+            pillNum = 0;
+            //publish upgrade event
+            Evently.Instance.Publish(new UpgradeEvent(GetComponent<PlayerInputComponent>().targetGridPosition, blankPos));
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<CollectableComponent>()!=null)
         {
+            pillNum++;
             Evently.Instance.Publish(new CollectionEvent(other.GetComponent<CollectableComponent>()));
         }
         else if(other.GetComponent<DamageComponent>()!=null)
         {
-            player_currenthp -= other.GetComponent<DamageComponent>().damage;
-            HPtext.text = "HP: " + player_currenthp.ToString();
+            Evently.Instance.Publish(new DamageEvent(other.GetComponent<DamageComponent>().damage));
         }
         if (FindObjectsOfType<CollectableComponent>().Length == 0)
         {

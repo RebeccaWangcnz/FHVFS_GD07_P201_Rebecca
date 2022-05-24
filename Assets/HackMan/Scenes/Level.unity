@@ -646,6 +646,7 @@ Transform:
   - {fileID: 1523863464}
   - {fileID: 1094342987}
   - {fileID: 176078112}
+  - {fileID: 1526737690}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1395,6 +1396,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24aeef4edfa29da49a0a27eb064f6543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_maxhp: 3
+--- !u!1 &1526737689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526737690}
+  - component: {fileID: 1526737691}
+  m_Layer: 0
+  m_Name: UpgradeSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526737690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526737689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 591943412}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1526737691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526737689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15313b73a5b5db4e8762f88d3904460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPart: {fileID: 7500044469271538429, guid: d549bc1c60dc6ba498060ad67835da75, type: 3}
 --- !u!1 &1679180661
 GameObject:
   m_ObjectHideFlags: 0
